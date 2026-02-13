@@ -25,17 +25,21 @@ Este proyecto está basado en [QuakeSpasm](https://github.com/sezero/quakespasm)
 ### Fase 1: Configuración Base ✅
 - [x] Clonar QuakeSpasm
 - [x] Configurar repositorio
-- [ ] Compilación inicial
+- [x] Sistema de shaders GLSL (preparado para futuro)
+- [x] Integración en motor base
 
-### Fase 2: Shader Matrix (En Progreso)
-- [ ] Implementar shader de digital rain
-- [ ] Integrar con pipeline de renderizado 3D
-- [ ] Ajuste de parámetros visuales
+### Fase 2: Overlay Matrix ✅  
+- [x] Implementar sistema de overlay compatible con fixed pipeline
+- [x] Generación procedural de textura de glyphs
+- [x] Animación de digital rain por columnas
+- [x] Integración completa en pipeline de renderizado
+- [x] Variables de consola para control
 
-### Fase 3: Fuentes y Efectos
-- [ ] Integrar fuentes Matrix auténticas
-- [ ] Implementar bloom y glow
-- [ ] Ajuste de colores fosforescentes
+### Fase 3: Mejoras Visuales (En Progreso)
+- [ ] Mejorar glyphs con fuentes Matrix auténticas
+- [ ] Implementar bloom y glow mejorado
+- [ ] Ajuste fino de colores y efectos
+- [ ] Optimización de rendimiento
 
 ### Fase 4: Build y Distribución
 - [ ] Compilación para Windows
@@ -53,6 +57,25 @@ Este proyecto está basado en [QuakeSpasm](https://github.com/sezero/quakespasm)
 - GCC
 - SDL2-dev
 - Mesa OpenGL
+
+## 🎮 Uso
+
+Una vez compilado, puedes controlar el efecto Matrix desde la consola de Quake (~):
+
+```
+// Activar/desactivar efecto Matrix
+r_matrix_overlay 1           // Activar
+r_matrix_overlay 0           // Desactivar
+
+// Ajustar intensidad (0.0 a 1.0)
+r_matrix_overlay_intensity 0.7
+
+// Velocidad de caída del código
+r_matrix_overlay_speed 1.0
+
+// Densidad de columnas activas (0.0 a 1.0)
+r_matrix_overlay_density 0.6
+```
 
 ## 📄 Licencia
 
