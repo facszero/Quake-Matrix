@@ -26,6 +26,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "cfgfile.h"
 #include "bgmusic.h"
 #include "resource.h"
+#include "matrix_shader.h"
 #if defined(SDL_FRAMEWORK) || defined(NO_SDL_CONFIG)
 #if defined(USE_SDL2)
 #include <SDL2/SDL.h>
@@ -1399,6 +1400,9 @@ static void GL_Init (void)
 	GLAlias_CreateShaders ();
 	GLWorld_CreateShaders ();
 	GL_ClearBufferBindings ();
+	
+	// Inicializar sistema Matrix Shader
+	MatrixShader_Init ();
 }
 
 /*
@@ -1435,6 +1439,9 @@ void	VID_Shutdown (void)
 {
 	if (vid_initialized)
 	{
+		// Shutdown Matrix Shader System
+		MatrixShader_Shutdown ();
+		
 		VID_Gamma_Shutdown (); //johnfitz
 #if defined(USE_SDL2)
 		SDL_GL_DeleteContext(gl_context);
