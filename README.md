@@ -1,130 +1,108 @@
 # Quake-Matrix
 
-**Motor Quake en el Universo Matrix**
+**Una reinterpretación del motor Quake original en el universo de The Matrix**
 
-```
- ██████╗ ██╗   ██╗ █████╗ ██╗  ██╗███████╗    ███╗   ███╗ █████╗ ████████╗██████╗ ██╗██╗  ██╗
-██╔═══██╗██║   ██║██╔══██╗██║ ██╔╝██╔════╝    ████╗ ████║██╔══██╗╚══██╔══╝██╔══██╗██║╚██╗██╔╝
-██║   ██║██║   ██║███████║█████╔╝ █████╗█████╗██╔████╔██║███████║   ██║   ██████╔╝██║ ╚███╔╝ 
-██║▄▄ ██║██║   ██║██╔══██║██╔═██╗ ██╔══╝╚════╝██║╚██╔╝██║██╔══██║   ██║   ██╔══██╗██║ ██╔██╗ 
-╚██████╔╝╚██████╔╝██║  ██║██║  ██╗███████╗    ██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║██║██╔╝ ██╗
- ╚══▀▀═╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝
-```
+## Descripción
 
-Proyecto que implementa una versión modificada del motor Quake original donde toda la visualización del mundo 3D se presenta con el efecto de "digital rain" (lluvia de código verde) característico de la película The Matrix.
+Quake-Matrix es una modificación del motor Quake que transforma la experiencia de juego transportándote al universo visual de The Matrix. El jugador verá el mundo a través de los ojos de Neo, con todo el entorno renderizado usando el icónico estilo de "código verde cayendo" (Matrix Digital Rain) de las películas.
 
-## 🎯 Objetivo
+## Características
 
-Transformar la experiencia visual de Quake para que el jugador vea el mundo a través de los ojos de Neo, con el código Matrix cayendo sobre toda la geometría, texturas y elementos del juego.
+- ✅ Motor basado en QuakeSpasm (GPL)
+- 🎨 Renderizado visual estilo Matrix con caracteres verdes cayendo
+- 🔤 Fuentes auténticas de The Matrix (Matrix Code NFI)
+- 🎮 Compatibilidad con mapas y mods de Quake original
+- 💚 Shader personalizado para efecto "Digital Rain"
+- 🖥️ Soporte nativo para Windows
 
-## 🛠️ Basado en
+## Fases de Desarrollo
 
-Este proyecto está basado en [QuakeSpasm](https://github.com/sezero/quakespasm), un motor Quake moderno y multiplataforma derivado de FitzQuake.
+### Fase 1: Base del Proyecto ✅
+- Configuración del repositorio Git
+- Estructura de directorios
+- Integración del código fuente de QuakeSpasm
+- Documentación inicial
 
-## ✨ Características Planeadas
+### Fase 2: Sistema de Renderizado Matrix (En Desarrollo)
+- Implementación del shader de "Digital Rain"
+- Integración de fuentes Matrix
+- Sistema de partículas con caracteres japoneses/katakana
+- Efectos de resplandor verde
 
-- **Visualización Matrix**: Todo el mundo 3D renderizado con el efecto de código verde cayendo
-- **Fuentes Auténticas**: Uso de las fuentes Matrix originales (katakana invertido + caracteres Chicago)
-- **Efectos Visuales**: Bloom, glow y tone-mapping verde fosforescente
-- **Modo Neo**: Opción para alternar entre vista normal y vista Matrix
-- **Instalador Windows**: Ejecutable e instalador listo para usar
+### Fase 3: Interfaz de Usuario
+- HUD rediseñado estilo Matrix
+- Menús con efectos de código verde
+- Consola personalizada
 
-## 📋 Fases de Desarrollo
+### Fase 4: Optimización y Pulido
+- Optimización de rendimiento
+- Ajustes de color y brillo
+- Efectos de post-procesamiento
 
-### Fase 1: Configuración Base ✅
-- [x] Clonar QuakeSpasm
-- [x] Configurar repositorio
-- [x] Sistema de shaders GLSL (preparado para futuro)
-- [x] Integración en motor base
+### Fase 5: Empaquetado y Distribución
+- Instalador para Windows
+- Documentación de usuario
+- Archivos de configuración predeterminados
 
-### Fase 2: Overlay Matrix ✅  
-- [x] Implementar sistema de overlay compatible con fixed pipeline
-- [x] Generación procedural de textura de glyphs
-- [x] Animación de digital rain por columnas
-- [x] Integración completa en pipeline de renderizado
-- [x] Variables de consola para control
+## Requisitos
 
-### Fase 3: Mejoras Visuales (En Progreso)
-- [ ] Mejorar glyphs con fuentes Matrix auténticas
-- [ ] Implementar bloom y glow mejorado
-- [ ] Ajuste fino de colores y efectos
-- [ ] Optimización de rendimiento
+### Para Compilar
+- MinGW-w64 (Windows)
+- SDL2
+- OpenGL 2.0+
+- Git
 
-### Fase 4: Build y Distribución
-- [ ] Compilación para Windows
-- [ ] Creación de instalador
-- [ ] Documentación de usuario
+### Para Ejecutar
+- Windows 7 o superior
+- Tarjeta gráfica con soporte OpenGL 2.0+
+- Archivos PAK de Quake original (id1/pak0.pak, id1/pak1.pak)
 
-## 📚 Documentación
-
-- **[Guía de Compilación](BUILD.md)** - Instrucciones detalladas para compilar en diferentes plataformas
-- **[Guía de Instalación](INSTALL.md)** - Cómo instalar y configurar el juego completo
-- **[Integración Técnica](INTEGRATION.md)** - Detalles de implementación para desarrolladores
-- **[Configuración de Ejemplo](matrix_example.cfg)** - Archivo de configuración con ajustes recomendados
-
-## 🚀 Inicio Rápido
+## Compilación
 
 ```bash
-# 1. Clonar repositorio
-git clone https://github.com/facszero/Quake-Matrix.git
-cd Quake-Matrix/Quake
-
-# 2. Compilar (requiere SDL2 y OpenGL)
-make USE_SDL2=1
-
-# 3. Copiar archivos de datos de Quake a id1/
-# 4. Ejecutar
-./quakespasm
+cd engine
+make -f Makefile.w32
 ```
 
-Ver [INSTALL.md](INSTALL.md) para instrucciones completas.
+## Instalación
 
-### Windows
-- MinGW-w64 o Visual Studio 2019+
-- SDL2
-- OpenGL
+1. Descargar el instalador desde Releases
+2. Ejecutar el instalador
+3. Copiar los archivos PAK de Quake original a la carpeta `id1/`
+4. ¡Ejecutar y disfrutar del mundo Matrix!
 
-### Linux
-- GCC
-- SDL2-dev
-- Mesa OpenGL
+## Licencia
 
-## 🎮 Uso
+Este proyecto está basado en QuakeSpasm y mantiene la licencia GPL v2.
 
-Una vez compilado, puedes controlar el efecto Matrix desde la consola de Quake (~):
+- **Motor Quake**: GPL v2 (id Software)
+- **QuakeSpasm**: GPL v2
+- **Código personalizado**: GPL v2
+- **Assets visuales Matrix**: Solo uso educativo/personal
 
-```
-// Activar/desactivar efecto Matrix
-r_matrix_overlay 1           // Activar
-r_matrix_overlay 0           // Desactivar
+## Créditos
 
-// Ajustar intensidad (0.0 a 1.0)
-r_matrix_overlay_intensity 0.7
+- **Desarrollador**: Fernando Cañete (facszero)
+- **Motor Base**: QuakeSpasm team
+- **Motor Original**: id Software (John Carmack y equipo)
+- **Inspiración Visual**: The Matrix (Wachowski Sisters)
+- **Fuente**: Matrix Code NFI (Norfok Incredible Font Design)
 
-// Velocidad de caída del código
-r_matrix_overlay_speed 1.0
+## Contacto
 
-// Densidad de columnas activas (0.0 a 1.0)
-r_matrix_overlay_density 0.6
-```
-
-## 📄 Licencia
-
-Este proyecto hereda la licencia GPL v2 de QuakeSpasm y del código fuente original de Quake.
-
-## 👤 Autor
-
-Fernando Cañete (facszero)
 - GitHub: [@facszero](https://github.com/facszero)
 - Email: facs.zero@gmail.com
 
-## 🙏 Créditos
+## Estado del Proyecto
 
-- id Software - Quake original
-- QuakeSpasm team - Motor base
-- Simon Whiteley - Diseño de fuentes Matrix originales
-- Wachowski Brothers - The Matrix
+🚧 **En Desarrollo Activo** 🚧
+
+Actualmente en Fase 1 - Configuración del proyecto base completada.
+
+## Capturas de Pantalla
+
+_Próximamente - Cuando tengamos el renderizado Matrix funcionando_
 
 ---
 
-*"Welcome to the real world, Neo."*
+**Nota**: Este es un proyecto educativo y de entretenimiento. Se requieren los archivos originales de Quake para jugar.
