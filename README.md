@@ -2,6 +2,15 @@
 
 **Motor Quake en el Universo Matrix**
 
+```
+ ██████╗ ██╗   ██╗ █████╗ ██╗  ██╗███████╗    ███╗   ███╗ █████╗ ████████╗██████╗ ██╗██╗  ██╗
+██╔═══██╗██║   ██║██╔══██╗██║ ██╔╝██╔════╝    ████╗ ████║██╔══██╗╚══██╔══╝██╔══██╗██║╚██╗██╔╝
+██║   ██║██║   ██║███████║█████╔╝ █████╗█████╗██╔████╔██║███████║   ██║   ██████╔╝██║ ╚███╔╝ 
+██║▄▄ ██║██║   ██║██╔══██║██╔═██╗ ██╔══╝╚════╝██║╚██╔╝██║██╔══██║   ██║   ██╔══██╗██║ ██╔██╗ 
+╚██████╔╝╚██████╔╝██║  ██║██║  ██╗███████╗    ██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║██║██╔╝ ██╗
+ ╚══▀▀═╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝
+```
+
 Proyecto que implementa una versión modificada del motor Quake original donde toda la visualización del mundo 3D se presenta con el efecto de "digital rain" (lluvia de código verde) característico de la película The Matrix.
 
 ## 🎯 Objetivo
@@ -46,7 +55,29 @@ Este proyecto está basado en [QuakeSpasm](https://github.com/sezero/quakespasm)
 - [ ] Creación de instalador
 - [ ] Documentación de usuario
 
-## 🔧 Requisitos de Compilación
+## 📚 Documentación
+
+- **[Guía de Compilación](BUILD.md)** - Instrucciones detalladas para compilar en diferentes plataformas
+- **[Guía de Instalación](INSTALL.md)** - Cómo instalar y configurar el juego completo
+- **[Integración Técnica](INTEGRATION.md)** - Detalles de implementación para desarrolladores
+- **[Configuración de Ejemplo](matrix_example.cfg)** - Archivo de configuración con ajustes recomendados
+
+## 🚀 Inicio Rápido
+
+```bash
+# 1. Clonar repositorio
+git clone https://github.com/facszero/Quake-Matrix.git
+cd Quake-Matrix/Quake
+
+# 2. Compilar (requiere SDL2 y OpenGL)
+make USE_SDL2=1
+
+# 3. Copiar archivos de datos de Quake a id1/
+# 4. Ejecutar
+./quakespasm
+```
+
+Ver [INSTALL.md](INSTALL.md) para instrucciones completas.
 
 ### Windows
 - MinGW-w64 o Visual Studio 2019+
