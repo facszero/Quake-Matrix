@@ -1,0 +1,64 @@
+# Compilados
+*.o
+*.d
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+
+# Ejecutables
+quakespasm
+quakespasm-sdl2
+
+# Directorios de build
+build/
+dist/
+*.dSYM/
+
+# Archivos de datos de Quake (no distribuir debido a copyright)
+id1/
+hipnotic/
+rogue/
+*.pak
+*.PAK
+
+# Saves y demos
+*.sav
+*.dem
+
+# Screenshots
+*.tga
+*.png
+*.jpg
+
+# Logs y configuración generada
+qconsole.log
+config.cfg
+*.cfg.bak
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Dependencias
+Windows/SDL/
+Windows/SDL2/
+MacOSX/SDL.framework/
+MacOSX/SDL2.framework/
+MacOSX/codecs/
+
+# Archivos temporales
+*.tmp
+*.log
+*.cache
+
+# Distribución
+*.zip
+*.tar.gz
+*.tar.bz2
