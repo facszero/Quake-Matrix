@@ -22,6 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // r_main.c
 
 #include "quakedef.h"
+#include "../src/gl_matrix.h"
 
 vec3_t		modelorg, r_entorigin;
 entity_t	*currententity;
@@ -1090,6 +1091,9 @@ void R_RenderView (void)
 
 	R_SetupView (); //johnfitz -- this does everything that should be done once per frame
 
+	// MATRIX: Comenzar renderizado Matrix
+	Matrix_BeginFrame();
+
 	//johnfitz -- stereo rendering -- full of hacky goodness
 	if (r_stereo.value)
 	{
@@ -1125,6 +1129,9 @@ void R_RenderView (void)
 		R_RenderScene ();
 	}
 	//johnfitz
+
+	// MATRIX: Finalizar renderizado Matrix
+	Matrix_EndFrame();
 
 	R_ScaleView ();
 

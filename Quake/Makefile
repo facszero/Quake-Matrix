@@ -259,6 +259,8 @@ OBJS = strlcat.o \
 	sv_user.o \
 	world.o \
 	zone.o \
+	../src/gl_matrix.o \
+	../src/gl_matrix_atlas.o \
 	$(SYSOBJ_SYS) $(SYSOBJ_MAIN)
 
 # ---------------------------
@@ -272,6 +274,12 @@ all: $(DEFAULT_TARGET)
 
 %.o:	%.c
 	$(CC) $(DFLAGS) -c $(CFLAGS) $(SDL_CFLAGS) -o $@ $<
+
+../src/%.o:	../src/%.c
+	$(CC) $(DFLAGS) -c $(CFLAGS) $(SDL_CFLAGS) -o $@ $<
+
+../src/gl_matrix.o: ../src/gl_matrix.c ../src/gl_matrix.h
+../src/gl_matrix_atlas.o: ../src/gl_matrix_atlas.c ../src/gl_matrix.h
 
 quakespasm:	$(OBJS)
 	$(LINKER) $(OBJS) $(LDFLAGS) $(LIBS) $(SDL_LIBS) -o $@

@@ -388,3 +388,92 @@ void Matrix_UnloadShaders(void)
         matrixShader.fragmentShader = 0;
     }
 }
+
+/*
+================
+Matrix_BeginFrame
+
+Inicia el renderizado Matrix para el frame actual
+================
+*/
+void Matrix_BeginFrame(void)
+{
+    if (!matrixConfig.enabled)
+        return;
+    
+    // Actualizar tiempo
+    matrixTime += host_frametime;
+    
+    // Actualizar configuración desde CVars
+    Matrix_UpdateConfig();
+    
+    // Activar shader
+    Matrix_BindShader(&matrixShader);
+    
+    // Pasar matrices al shader
+    Matrix_SetMatrices();
+}
+
+/*
+================
+Matrix_EndFrame
+
+Finaliza el renderizado Matrix
+================
+*/
+void Matrix_EndFrame(void)
+{
+    if (!matrixConfig.enabled)
+        return;
+    
+    // Desactivar shader (volver a fixed pipeline)
+    glUseProgram(0);
+}
+
+/*
+================
+Matrix_SetMatrices
+
+Pasa las matrices de transformación al shader
+================
+*/
+void Matrix_SetMatrices(void)
+{
+    GLfloat modelview[16];
+    GLfloat projection[16];
+    GLfloat mvp[16];
+    GLint loc;
+    int i, j;
+    
+    // Obtener matrices actuales de OpenGL
+    glGetFloatv(GL_MODELVIEW_MATRIX, modelview);
+    glGetFloatv(GL_PROJECTION_MATRIX, projection);
+    
+    // Calcular MVP = Projection * ModelView
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            mvp[i*4 + j] = 
+                projection[i*4 + 0] * modelview[0*4 + j] +
+                projection[i*4 + 1] * modelview[1*4 + j] +
+                projection[i*4 + 2] * modelview[2*4 + j] +
+                projection[i*4 + 3] * modelview[3*4 + j];
+        }
+    }
+    
+    // Pasar matrices al shader
+    loc = glGetUniformLocation(matrixShader.program, "u_modelViewProjection");
+    if (loc >= 0)
+        glUniformMatrix4fv(loc, 1, GL_FALSE, mvp);
+    
+    loc = glGetUniformLocation(matrixShader.program, "u_modelView");
+    if (loc >= 0)
+        glUniformMatrix4fv(loc, 1, GL_FALSE, modelview);
+    
+    // Calcular y pasar matriz normal (inversa-transpuesta de modelview 3x3)
+    // Por simplicidad, usamos modelview directamente (válido para transformaciones uniformes)
+    loc = glGetUniformLocation(matrixShader.program, "u_normalMatrix");
+    if (loc >= 0)
+        glUniformMatrix4fv(loc, 1, GL_FALSE, modelview);
+}
