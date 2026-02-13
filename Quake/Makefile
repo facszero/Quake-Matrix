@@ -215,7 +215,8 @@ GLOBJS = \
 	r_alias.o \
 	r_brush.o \
 	gl_model.o \
-	matrix_shader.o
+	matrix_shader.o \
+	matrix_overlay.o
 
 OBJS = strlcat.o \
 	strlcpy.o \

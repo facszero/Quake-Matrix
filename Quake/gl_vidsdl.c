@@ -27,6 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "bgmusic.h"
 #include "resource.h"
 #include "matrix_shader.h"
+#include "matrix_overlay.h"
 #if defined(SDL_FRAMEWORK) || defined(NO_SDL_CONFIG)
 #if defined(USE_SDL2)
 #include <SDL2/SDL.h>
@@ -1403,6 +1404,9 @@ static void GL_Init (void)
 	
 	// Inicializar sistema Matrix Shader
 	MatrixShader_Init ();
+	
+	// Inicializar sistema Matrix Overlay
+	MatrixOverlay_Init ();
 }
 
 /*
@@ -1439,7 +1443,8 @@ void	VID_Shutdown (void)
 {
 	if (vid_initialized)
 	{
-		// Shutdown Matrix Shader System
+		// Shutdown Matrix Systems
+		MatrixOverlay_Shutdown ();
 		MatrixShader_Shutdown ();
 		
 		VID_Gamma_Shutdown (); //johnfitz

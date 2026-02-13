@@ -24,6 +24,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // screen.c -- master for refresh, status bar, console, chat, notify, etc
 
 #include "quakedef.h"
+#include "matrix_overlay.h"
 
 /*
 
@@ -1110,6 +1111,10 @@ void SCR_UpdateScreen (void)
 	V_UpdateBlend (); //johnfitz -- V_UpdatePalette cleaned up and renamed
 
 	GLSLGamma_GammaCorrect ();
+	
+	// Actualizar y dibujar overlay Matrix
+	MatrixOverlay_Update (host_frametime);
+	MatrixOverlay_Draw ();
 
 	GL_EndRendering ();
 }
